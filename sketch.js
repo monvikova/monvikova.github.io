@@ -5,11 +5,12 @@ import { VRButton } from 'three/addons/webxr/VRButton.js';
 
 const scene = new THREE.Scene();
 
-// Zmenšení celé scény a její posunutí nahoru
+// Zmenšení celé scény a její posunutí dolů
 scene.scale.set(0.3, 0.3, 0.3); // Zmenšení
-scene.position.set(0, 2, 0); // Posun nahoru
+scene.position.set(0, -2, 0); // Posun dolů
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 3, 5); // Kamera zůstává výše
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -40,8 +41,6 @@ const lampMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFF00 });
 const lampMesh = new THREE.Mesh(lampGeometry, lampMaterial);
 lampMesh.position.copy(lamp.position);
 scene.add(lampMesh);
-
-camera.position.set(0, 3, 5); // Posunutí kamery výše (y = 2)
 
 // Načtení modelů pomocí GLTFLoader
 const loader = new GLTFLoader();
@@ -249,7 +248,6 @@ class Krecek {
     }
   }
 }
-
 // Spawnování více křečků
 const maxKrecku = 10;
 const krecekObjects = [];
