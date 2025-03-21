@@ -41,7 +41,7 @@ const lampMesh = new THREE.Mesh(lampGeometry, lampMaterial);
 lampMesh.position.copy(lamp.position);
 scene.add(lampMesh);
 
-camera.position.z = 5;
+camera.position.set(0, 3, 5); // Posunutí kamery výše (y = 2)
 
 // Načtení modelů pomocí GLTFLoader
 const loader = new GLTFLoader();
