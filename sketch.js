@@ -5,11 +5,9 @@ import { VRButton } from 'three/addons/webxr/VRButton.js';
 
 const scene = new THREE.Scene();
 
-// Zmenšení celé scény na polovinu
-scene.scale.set(0.5, 0.5, 0.5);
-
-// Posunutí celé scény mírně nahoru
-scene.position.set(0, -1, 0); // Posun dolu
+// Zmenšení celé scény a její posunutí nahoru
+scene.scale.set(0.3, 0.3, 0.3); // Zmenšení
+scene.position.set(0, 2, 0); // Posun nahoru
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -27,12 +25,12 @@ const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2);
 scene.add(ambientLight);
 
 // Lampa za křečkem
-const lamp = new THREE.SpotLight(0xFFFFFF, 500);
-lamp.position.set(0, 5, 5);
+const lamp = new THREE.SpotLight(0xFFFFFF, 200); // Snížená intenzita
+lamp.position.set(0, 10, 15); // Dál od scény
 lamp.angle = Math.PI / 6;
 lamp.penumbra = 0.3;
 lamp.decay = 2;
-lamp.distance = 1000;
+lamp.distance = 1500; // Zvýšení vzdálenosti
 lamp.target.position.set(0, 0, 0);
 scene.add(lamp);
 scene.add(lamp.target);
@@ -283,4 +281,3 @@ function animate() {
   updateAllKrecekMovement(); // Aktualizace pohybu křečků
   renderer.render(scene, camera); // Vykreslení scény
 }
-
